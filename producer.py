@@ -87,33 +87,22 @@ class AcessLog():
     ]
 
     user_agents = [
-        # Desktop browsers
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 "
         "(KHTML, like Gecko) Version/17.0 Safari/605.1.15",
-        
-        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0",
-        
-        # Mobile browsers
+        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0",        
         "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 "
         "(KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
-        
         "Mozilla/5.0 (Linux; Android 14; Pixel 7 Pro) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-        
         "Mozilla/5.0 (Linux; Android 13; SM-G996U) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/119.0.6045.134 Mobile Safari/537.36",
-        
-        # Bots and crawlers
         "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
         "Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)",
         "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)",
         "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)",
         "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
-        
-        # Tools / APIs / Misc
         "curl/8.4.0",
         "PostmanRuntime/7.36.0",
         "Wget/1.21.3 (linux-gnu)",
@@ -167,7 +156,7 @@ class AcessLog():
         client_errors = [404]
         server_errors = [500]
 
-        error_chance = 5            # Percentage 
+        error_chance = 20                            # Percentage 
 
         roll = random.randint(1, 100)
         if roll <= error_chance:
@@ -265,10 +254,12 @@ i = 0
 # while i < web_log_count:
 while True:
     if random.random() < 0.3: 
+    # if random.random() < 0.8: 
         burst_length = random.randint(5, 15) 
         for _ in range(burst_length):
             generate_log()
             time.sleep(random.uniform(0.05, 0.1))  
+            # time.sleep(random.uniform(0.01, 0.05))  
     else:
         generate_log()
         time.sleep(random.uniform(.2, .4))  
