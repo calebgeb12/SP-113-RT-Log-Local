@@ -58,15 +58,12 @@ class AcessLog():
     ]
 
     referrers = [
-        # Search engines
         "https://www.google.com/",
         "https://www.bing.com/",
         "https://search.yahoo.com/",
         "https://duckduckgo.com/",
         "https://www.baidu.com/",
         "https://www.yandex.com/",
-
-        # Social media
         "https://www.facebook.com/",
         "https://twitter.com/",
         "https://www.instagram.com/",
@@ -74,21 +71,15 @@ class AcessLog():
         "https://www.reddit.com/",
         "https://www.tiktok.com/",
         "https://www.pinterest.com/",
-
-        # News / content aggregators
         "https://news.google.com/",
         "https://medium.com/",
         "https://www.nytimes.com/",
         "https://www.bbc.com/",
         "https://www.hackernews.com/",
         "https://www.producthunt.com/",
-
-        # Internal site examples
         "https://example.com/",
         "https://example.com/blog/post1",
         "https://example.com/contact",
-
-        # Technical / tools / other
         "https://github.com/",
         "https://slack.com/",
         "https://mail.google.com/",
@@ -171,8 +162,10 @@ class AcessLog():
     def generate_status_code(self):
         success = [200, 201, 204]
         redirects = [301, 302, 307]
-        client_errors = [400, 401, 403, 404]
-        server_errors = [500, 502, 503]
+        # client_errors = [400, 401, 403, 404]
+        # server_errors = [500, 502, 503]
+        client_errors = [404]
+        server_errors = [500]
 
         error_chance = 5            # Percentage 
 
@@ -198,7 +191,7 @@ class AcessLog():
 
     def generate_bytes(self):
         range = random.randint(1, 100)
-        bytes = 0;
+        bytes = 0
         if range < 90:
             bytes = random.randint(200, 10000)
         elif range < 98:
@@ -254,8 +247,8 @@ class ErrorLog():
 def generate_log():
     web_log = AcessLog()
     producer.send("web-logs", value=web_log.log)
+    print(Fore.WHITE + web_log.log)
     if web_log.code_type == "redirect":
-        print(Fore.WHITE + web_log.log)
         redirect_log = AcessLog()
         producer.send("web-logs", value=redirect_log.log)
         print(Fore.GREEN + redirect_log.log)
