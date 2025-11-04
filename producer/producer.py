@@ -7,7 +7,7 @@ from colorama import Fore, Style, init
 
 
 producer = KafkaProducer(
-    bootstrap_servers=['localhost:9092'],
+    bootstrap_servers=['kafka:9092'],
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
@@ -253,13 +253,13 @@ web_log_count = 10000
 i = 0
 # while i < web_log_count:
 while True:
-    if random.random() < 0.3: 
-    # if random.random() < 0.8: 
+    # if random.random() < 0.3: 
+    if random.random() < 0.8: 
         burst_length = random.randint(5, 15) 
         for _ in range(burst_length):
             generate_log()
-            time.sleep(random.uniform(0.05, 0.1))  
-            # time.sleep(random.uniform(0.01, 0.05))  
+            # time.sleep(random.uniform(0.05, 0.1))  
+            time.sleep(random.uniform(0.01, 0.05))  
     else:
         generate_log()
         time.sleep(random.uniform(.2, .4))  
