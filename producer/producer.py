@@ -11,7 +11,6 @@ producer = KafkaProducer(
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-
 class AcessLog():
     def __init__(self):
         self.type = self.determine_type()
