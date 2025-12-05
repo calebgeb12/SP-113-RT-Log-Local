@@ -1,5 +1,9 @@
 ﻿# SP-113-RT-Log-Local
 
+HOW TO SETUP THE PROJECT:
+
+Clone this repository
+
 Make sure you open four seperate linux terminals
 
 1) in .../kafka-setup run the following in this order
@@ -17,4 +21,5 @@ kafka-console-consumer --topic web-logs --from-beginning --bootstrap-server loca
 
 
 4) in .../gui run python3 gui_display.py
+
 
